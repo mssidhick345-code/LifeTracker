@@ -1,0 +1,157 @@
+.habit-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(23, 27, 36, 0.92);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.habit-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 20px;
+}
+
+.habit-form input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--text);
+  min-height: 46px;
+  padding: 0 14px;
+}
+
+.habit-form input:focus {
+  border-color: var(--accent);
+  background: var(--surface-raised);
+  outline: 3px solid var(--focus);
+}
+
+.habit-list {
+  display: grid;
+}
+
+.habit-row {
+  display: grid;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding: 16px 20px;
+}
+
+.habit-row:last-child {
+  border-bottom: 0;
+}
+
+.habit-summary {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 86px 78px;
+  gap: 12px;
+  align-items: center;
+}
+
+.habit-check {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  color: #07110e;
+  font-weight: 900;
+  height: 34px;
+  width: 34px;
+}
+
+.habit-check.active {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.habit-title,
+.habit-streak,
+.habit-empty {
+  margin: 0;
+}
+
+.habit-title {
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.habit-streak {
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin-top: 4px;
+}
+
+.habit-schedule,
+.habit-delete {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  font-weight: 800;
+  min-height: 38px;
+}
+
+.habit-schedule {
+  color: var(--accent-strong);
+}
+
+.habit-delete {
+  color: var(--warning);
+}
+
+.habit-calendar {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(26px, 1fr));
+  gap: 7px;
+}
+
+.habit-day {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  min-height: 30px;
+}
+
+.habit-day.active {
+  border-color: rgba(82, 214, 181, 0.5);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.habit-empty {
+  color: var(--muted);
+  padding: 26px 20px;
+  text-align: center;
+}
+
+@media (max-width: 680px) {
+  .habit-form {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .habit-row {
+    padding: 14px;
+  }
+
+  .habit-summary {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .habit-schedule,
+  .habit-delete {
+    grid-column: 1 / -1;
+  }
+
+  .habit-calendar {
+    grid-template-columns: repeat(7, minmax(28px, 1fr));
+  }
+}

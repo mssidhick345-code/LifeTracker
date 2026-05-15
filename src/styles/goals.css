@@ -1,0 +1,179 @@
+.goal-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(23, 27, 36, 0.92);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.goal-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px auto;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 20px;
+}
+
+.goal-form input,
+.goal-task-form input {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  color: var(--text);
+  min-height: 46px;
+  padding: 0 14px;
+}
+
+.goal-form input:focus,
+.goal-task-form input:focus {
+  border-color: var(--accent);
+  background: var(--surface-raised);
+  outline: 3px solid var(--focus);
+}
+
+.goal-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.goal-card {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  padding: 16px;
+}
+
+.goal-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.goal-card h2,
+.goal-deadline,
+.goal-progress-text,
+.goal-empty {
+  margin: 0;
+}
+
+.goal-card h2 {
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.goal-deadline,
+.goal-progress-text {
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin-top: 6px;
+}
+
+.goal-delete,
+.goal-task-schedule,
+.goal-task-delete {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--warning);
+  font-weight: 800;
+  min-height: 36px;
+  padding: 0 10px;
+}
+
+.goal-task-schedule {
+  color: var(--accent-strong);
+}
+
+.goal-progress {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.goal-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent), #86a8ff);
+}
+
+.goal-task-list {
+  display: grid;
+  gap: 8px;
+}
+
+.goal-task {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 86px 74px;
+  gap: 9px;
+  align-items: center;
+  color: var(--text);
+}
+
+.goal-task.done span {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.goal-task-check {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: #07110e;
+  font-weight: 900;
+  height: 30px;
+  width: 30px;
+}
+
+.goal-task-check.active {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.goal-task-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.goal-empty {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  padding: 12px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .goal-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .goal-form,
+  .goal-task-form {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .goal-list {
+    padding: 14px;
+  }
+
+  .goal-task {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+
+  .goal-task-schedule,
+  .goal-task-delete {
+    grid-column: 1 / -1;
+  }
+}

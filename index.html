@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LifeTrack</title>
+    <link rel="stylesheet" href="./src/styles/base.css" />
+    <link rel="stylesheet" href="./src/styles/layout.css" />
+    <link rel="stylesheet" href="./src/styles/planner.css?v=2" />
+    <link rel="stylesheet" href="./src/styles/tasks.css" />
+    <link rel="stylesheet" href="./src/styles/habits.css" />
+    <link rel="stylesheet" href="./src/styles/goals.css" />
+    <link rel="stylesheet" href="./src/styles/dashboard.css" />
+    <link rel="manifest" href="./manifest.json" />
+<meta name="theme-color" content="#0f172a" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <div>
+            <p class="brand-name">LifeTrack</p>
+            <p class="brand-subtitle">Daily operating system</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="App sections">
+          <a class="nav-item active" href="#planner" data-view-link="planner" aria-current="page">Planner</a>
+          <a class="nav-item" href="#tasks" data-view-link="tasks">Tasks</a>
+          <a class="nav-item" href="#habits" data-view-link="habits">Habits</a>
+          <a class="nav-item" href="#goals" data-view-link="goals">Goals</a>
+          <a class="nav-item" href="#dashboard" data-view-link="dashboard">Dashboard</a>
+        </nav>
+      </aside>
+
+      <main class="main-content app-view active" id="planner" data-view="planner">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Focus for today</p>
+            <h1>Daily Planner</h1>
+          </div>
+          <div class="date-control">
+            <label for="planner-date">Date</label>
+            <input id="planner-date" type="date" />
+          </div>
+        </header>
+
+        <section class="stats-grid" aria-label="Planner progress">
+          <article class="stat-tile">
+            <span class="stat-label">Scheduled</span>
+            <strong id="scheduled-count">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Completed</span>
+            <strong id="completed-count">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Open Tasks</span>
+            <strong id="open-count">0</strong>
+          </article>
+        </section>
+
+        <section class="planner-panel" aria-labelledby="planner-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="planner-title">24-Hour Daily Schedule</h2>
+              <p>Tasks appear here after scheduling them from the Tasks page.</p>
+            </div>
+            <div class="planner-actions">
+              <button id="toggle-planner" class="ghost-button" type="button">Collapse</button>
+            </div>
+          </div>
+
+          <div id="planner-grid" class="planner-grid" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <main class="main-content app-view" id="tasks" data-view="tasks">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Execution list</p>
+            <h1>Tasks</h1>
+          </div>
+        </header>
+
+        <section class="stats-grid" aria-label="Task progress">
+          <article class="stat-tile">
+            <span class="stat-label">Total Tasks</span>
+            <strong id="task-total-count">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Completed</span>
+            <strong id="task-completed-count">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Completion</span>
+            <strong id="task-completion-percent">0%</strong>
+          </article>
+        </section>
+
+        <section class="task-panel" aria-labelledby="tasks-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="tasks-title">Task Manager</h2>
+              <p>Capture, finish, and filter your active work.</p>
+            </div>
+          </div>
+
+          <form id="task-form" class="task-form">
+            <label class="sr-only" for="task-input">Task name</label>
+            <input id="task-input" type="text" placeholder="Add a task..." autocomplete="off" />
+            <label class="sr-only" for="task-description-input">Description</label>
+            <input
+              id="task-description-input"
+              type="text"
+              placeholder="Short description..."
+              autocomplete="off"
+            />
+            <label class="sr-only" for="task-priority-input">Priority</label>
+            <select id="task-priority-input">
+              <option value="low">Low priority</option>
+              <option value="medium" selected>Medium priority</option>
+              <option value="high">High priority</option>
+            </select>
+            <label class="sr-only" for="task-goal-input">Goal</label>
+            <select id="task-goal-input">
+              <option value="">Independent task</option>
+            </select>
+            <button class="primary-button" type="submit">Add Task</button>
+          </form>
+
+          <div class="filter-tabs" aria-label="Task filters">
+            <button class="filter-button active" type="button" data-task-filter="all">All</button>
+            <button class="filter-button" type="button" data-task-filter="completed">Completed</button>
+            <button class="filter-button" type="button" data-task-filter="pending">Pending</button>
+          </div>
+
+          <div id="task-list" class="task-list" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <main class="main-content app-view" id="habits" data-view="habits">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Daily consistency</p>
+            <h1>Habits</h1>
+          </div>
+        </header>
+
+        <section class="stats-grid" aria-label="Habit progress">
+          <article class="stat-tile">
+            <span class="stat-label">Habits</span>
+            <strong id="habit-total-count">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Done Today</span>
+            <strong id="habit-done-count">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Best Streak</span>
+            <strong id="habit-best-streak">0</strong>
+          </article>
+        </section>
+
+        <section class="habit-panel" aria-labelledby="habits-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="habits-title">Habit Tracker</h2>
+              <p>Check off today and watch your streaks build.</p>
+            </div>
+          </div>
+
+          <form id="habit-form" class="habit-form">
+            <label class="sr-only" for="habit-input">Habit name</label>
+            <input id="habit-input" type="text" placeholder="Add a daily habit..." autocomplete="off" />
+            <button class="primary-button" type="submit">Add Habit</button>
+          </form>
+
+          <div id="habit-list" class="habit-list" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <main class="main-content app-view" id="goals" data-view="goals">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Long-term direction</p>
+            <h1>Goals</h1>
+          </div>
+        </header>
+
+        <section class="goal-panel" aria-labelledby="goals-title">
+          <div class="section-heading">
+            <div>
+              <h2 id="goals-title">Goal Tracker</h2>
+              <p>Break big goals into trackable tasks.</p>
+            </div>
+          </div>
+
+          <form id="goal-form" class="goal-form">
+            <label class="sr-only" for="goal-title-input">Goal title</label>
+            <input id="goal-title-input" type="text" placeholder="Long-term goal..." autocomplete="off" />
+            <label class="sr-only" for="goal-deadline-input">Deadline</label>
+            <input id="goal-deadline-input" type="date" />
+            <button class="primary-button" type="submit">Add Goal</button>
+          </form>
+
+          <div id="goal-list" class="goal-list" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <main class="main-content app-view" id="dashboard" data-view="dashboard">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Weekly review</p>
+            <h1>Dashboard</h1>
+          </div>
+        </header>
+
+        <section class="stats-grid" aria-label="Dashboard summary">
+          <article class="stat-tile">
+            <span class="stat-label">Tasks Completed</span>
+            <strong id="dashboard-tasks-completed">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Top Habit Streak</span>
+            <strong id="dashboard-best-streak">0</strong>
+          </article>
+          <article class="stat-tile">
+            <span class="stat-label">Productivity Score</span>
+            <strong id="dashboard-productivity-score">0%</strong>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="dashboard-panel">
+            <div class="section-heading compact">
+              <div>
+                <h2>Weekly Progress</h2>
+                <p>Planner completions and habit check-ins.</p>
+              </div>
+            </div>
+            <canvas id="weekly-progress-chart" height="240" aria-label="Weekly progress chart"></canvas>
+          </article>
+
+          <article class="dashboard-panel">
+            <div class="section-heading compact">
+              <div>
+                <h2>Habit Streaks</h2>
+                <p>Current streaks across active habits.</p>
+              </div>
+            </div>
+            <div id="dashboard-habit-streaks" class="dashboard-list"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./src/js/app.js"></script>
+  </body>
+</html>

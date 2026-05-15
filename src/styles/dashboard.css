@@ -1,0 +1,58 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 16px;
+}
+
+.dashboard-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(23, 27, 36, 0.92);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.section-heading.compact {
+  padding: 18px;
+}
+
+#weekly-progress-chart {
+  display: block;
+  width: 100%;
+  padding: 16px;
+}
+
+.dashboard-list {
+  display: grid;
+}
+
+.dashboard-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+  padding: 14px 18px;
+}
+
+.dashboard-list-row span {
+  overflow-wrap: anywhere;
+}
+
+.dashboard-list-row strong {
+  color: var(--accent-strong);
+  white-space: nowrap;
+}
+
+.dashboard-empty {
+  color: var(--muted);
+  margin: 0;
+  padding: 24px 18px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

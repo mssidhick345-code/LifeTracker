@@ -1,0 +1,154 @@
+.planner-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(23, 27, 36, 0.92);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid var(--line);
+  padding: 20px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  color: var(--warning);
+  font-weight: 800;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.primary-button {
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #86a8ff);
+  color: #08110e;
+  font-weight: 800;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.planner-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.planner-grid {
+  display: grid;
+  max-height: 620px;
+  overflow-y: auto;
+}
+
+.planner-grid.collapsed {
+  display: none;
+}
+
+.schedule-row,
+#planner-grid > article {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  min-height: 52px;
+  padding: 10px 20px;
+}
+
+.schedule-row:last-child,
+#planner-grid > article:last-child {
+  border-bottom: 0;
+}
+
+.schedule-row.current {
+  background: rgba(82, 214, 181, 0.08);
+}
+
+.schedule-time {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.schedule-content {
+  display: grid;
+  gap: 8px;
+}
+
+.schedule-empty {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.scheduled-task {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px 78px;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-raised);
+  min-height: 40px;
+  padding: 8px 10px;
+}
+
+.scheduled-title {
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.scheduled-time {
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.scheduled-remove {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--warning);
+  font-weight: 800;
+  min-height: 34px;
+}
+
+.scheduled-remove:hover,
+.ghost-button:hover,
+.primary-button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 680px) {
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .planner-actions {
+    display: grid;
+  }
+
+  .schedule-row,
+  #planner-grid > article {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .scheduled-task {
+    grid-template-columns: 1fr;
+  }
+}
